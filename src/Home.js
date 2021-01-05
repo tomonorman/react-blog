@@ -1,19 +1,20 @@
-const Home = () => {
-  
-  const handleClick = (event) => {
-    console.log("Hi everyone!");
-  }
+import { useState } from "react";
 
-  const handleClickAgain = (name, event) => {
-    console.log(`Hi ${name}!`, event.target);
-  }
+const Home = () => {
+  const [blogs, setBlogs] = useState([
+    { title: "Welcome to my New Blog!", body: "lorem ipsum...", author: "Tomo", id: 1 },
+    { title: "Job Hunting after finishing a bootcamp", body: "lorem ipsum...", author: "Taku", id: 2 },
+    { title: "Birthday Party for a 2 year old", body: "lorem ipsum...", author: "Tomo", id: 3 }
+  ]);
   
   return (
     <div className="home">
-      <h2>Homepage</h2>
-      <button onClick={handleClick}>Click Me!</button>
-      {/* Cannot use paraenthesis otherwise the function is automatically invoked without a click. So use an anoymous function */}
-      <button onClick={(event) => handleClickAgain("Tomo", event)}>Click Me Again!</button>
+      {blogs.map((blog) => (
+        <div className="blog-preview" key={blog.id}>
+          <h2>{ blog.title }</h2>
+          <p>Written by { blog.author }</p>
+        </div>
+      ))}
     </div>
    );
 }
