@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -8,10 +8,20 @@ const Home = () => {
     { title: "Birthday Party for a 2 year old", body: "lorem ipsum...", author: "Tomo", id: 3 }
   ]);
   
+  const handleDelete = (id) => {
+    // Don't mutate original staste, but create new state by filtering:
+    const newBlogs = blogs.filter(blog => blog.id !== id);
+    // setBlogs to be the new array without deleted item
+    setBlogs(newBlogs);
+  }
+
+  useEffect(() => {
+    console.log("Hi Tomo");
+  });
+
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs" />
-      <BlogList blogs={blogs.filter((blog) => blog.author === "Tomo")} title="Tomo's Blogs" />
+      <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
     </div>
    );
 }
