@@ -1,0 +1,16 @@
+{
+  "blogs": [
+    {
+      "title": "My First Blog",
+      "body": "Welcome to the first blog post.\nTest blog up and running",
+      "author": "Tomo",
+      "id": 1
+    },
+    {
+      "title": "Starting as a Junior Developer",
+      "body": "What you need to get that first job",
+      "author": "Taku",
+      "id": 2
+    }
+  ]
+}
