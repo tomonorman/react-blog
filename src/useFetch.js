@@ -6,7 +6,9 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(url)
+    const abortCont = new AbortController();
+
+    fetch(url, { signal: abortCont.signal })
       .then(response => {
         if (!response.ok) {
           throw Error("could not fetch data for that resource");
@@ -19,9 +21,15 @@ const useFetch = (url) => {
         setError(null);
       })
       .catch(error => {
+        if (error.name === "AbortError") {
+          console.log("fetch aborted")
+        } else {
         setIsPending(false);
         setError(error.message);
+        }
       })
+
+      return () => abortCont.abort();
   }, [url]); // The second argument prevents useEffect from firing everytime there is a rerender, only what changes inside the array
 
   return { data, isPending, error }
