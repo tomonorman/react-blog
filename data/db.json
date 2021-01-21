@@ -11,6 +11,18 @@
       "body": "What you need to get that first job",
       "author": "Taku",
       "id": 2
+    },
+    {
+      "title": "Hello from the Console",
+      "body": "New Blog POst using fetch request",
+      "author": "taku",
+      "id": 3
+    },
+    {
+      "title": "Post request test 2",
+      "body": "Should be adding data to the blog",
+      "author": "tomo",
+      "id": 4
     }
   ]
 }
